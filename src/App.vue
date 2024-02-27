@@ -1,17 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="form">
+    <addItem />
+    <itemView :todos="todos"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios';
+import itemView from './components/itemView.vue'
+import addItem from './components/addItem.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    addItem,
+    itemView,
+  },
+    data(){
+      return{
+        todos:[],
+      }
+    },
+    methods: {
+      getTodos(){
+        axios.get('http://localhost:3000/todos')
+        .then(response =>{
+          this.todos = response.data;
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+      }
+
+    },
+    created(){
+      this.getTodos();
+    }
   }
-}
 </script>
 
 <style>
