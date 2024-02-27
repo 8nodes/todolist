@@ -21,7 +21,7 @@ export default {
     },
     methods: {
       getTodos(){
-        axios.get('http://localhost:3000/todos')
+        axios.get('http://localhost:3030/todos')
         .then(response =>{
           this.todos = response.data;
         })

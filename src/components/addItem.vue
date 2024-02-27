@@ -49,7 +49,7 @@ export default {
             this.todo.steps.splice(index,1);
         },
         submitForm(){
-            axios.post('http://localhost:3000/todos/add',this.todo)
+            axios.post('http://localhost:3030/todos/add',this.todo)
             .then(response =>{
                 console.log('Todo saved successfully',response.data);
             })
